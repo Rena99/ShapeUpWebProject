@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rIjrYytw2F39EOFBvpcwVnrBCsC/7Y03ITqxRC40tk0p1aYkuTqvYqU03o0nLKR8lwTWVruH4/QRY/BEYaHycg==",
+  "dgSpecHash": "wk9ZCJHffJRWWIzwfw/20Jagwf5vfnodF/sea2VeUxahmiVbJoWRkmQhqwFGEWcYW7R0Cl1r0tVafgNiryB2Hg==",
   "success": true,
-  "projectFilePath": "F:\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
+  "projectFilePath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rina lerner\\.nuget\\packages\\castle.core\\4.2.1\\castle.core.4.2.1.nupkg.sha512",
     "C:\\Users\\rina lerner\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

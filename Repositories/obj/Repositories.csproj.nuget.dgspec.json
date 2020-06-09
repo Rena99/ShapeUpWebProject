@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\ShapeUpDBProject\\Repositories\\Repositories.csproj": {}
+    "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj": {}
   },
   "projects": {
-    "F:\\ShapeUpDBProject\\Repositories\\Repositories.csproj": {
+    "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
+        "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
         "projectName": "Repositories",
-        "projectPath": "F:\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
+        "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
         "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
-        "outputPath": "F:\\ShapeUpDBProject\\Repositories\\obj\\",
+        "outputPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",

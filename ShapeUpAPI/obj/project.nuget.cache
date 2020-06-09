@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+LuFsZHICc34sq/APcCNDZrxYgwmswdg8GQzZJq2S+4jotsJjgalZPNFUC67HzSr4psM11/IOc/39jsmCOceRw==",
+  "dgSpecHash": "qS43bxrhCJ8xqVEREn8Vp6XiOGrCyv5ND9ENF9iq90VL7eJKyvVgMu+tBw7ym+w/f9PVAnR3dfJxMpx8XgkHbA==",
   "success": true,
-  "projectFilePath": "F:\\ShapeUpDBProject\\ShapeUpAPI\\ShapeUpAPI.csproj",
+  "projectFilePath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\ShapeUpAPI\\ShapeUpAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rina lerner\\.nuget\\packages\\castle.core\\4.2.1\\castle.core.4.2.1.nupkg.sha512",
     "C:\\Users\\rina lerner\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",

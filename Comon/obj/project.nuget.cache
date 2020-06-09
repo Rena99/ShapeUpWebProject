@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "71P8vaQ4/Fh8SYkKGdPn6lAJl//RAR/DYv9zrEkjeI62dukkXHYjLQu0Ch6oqM+PSY6qc81ku3oZM1u4mW6A9w==",
+  "dgSpecHash": "7tflE2znhK9jIB7ClNw+6FPZHemZ358x33ZUWzcMFgyUiH0QD00al3DBjUpWOnT84Vhb+h8l0yYomj8O0L2seA==",
   "success": true,
-  "projectFilePath": "F:\\ShapeUpDBProject\\Comon\\Comon.csproj",
+  "projectFilePath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rina lerner\\.nuget\\packages\\castle.core\\4.2.1\\castle.core.4.2.1.nupkg.sha512",
     "C:\\Users\\rina lerner\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

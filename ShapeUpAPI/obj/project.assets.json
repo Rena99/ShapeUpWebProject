@@ -12141,11 +12141,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\ShapeUpDBProject\\ShapeUpAPI\\ShapeUpAPI.csproj",
+      "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\ShapeUpAPI\\ShapeUpAPI.csproj",
       "projectName": "ShapeUpAPI",
-      "projectPath": "F:\\ShapeUpDBProject\\ShapeUpAPI\\ShapeUpAPI.csproj",
+      "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\ShapeUpAPI\\ShapeUpAPI.csproj",
       "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
-      "outputPath": "F:\\ShapeUpDBProject\\ShapeUpAPI\\obj\\",
+      "outputPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\ShapeUpAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -12161,8 +12161,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "F:\\ShapeUpDBProject\\Services\\Services.csproj": {
-              "projectPath": "F:\\ShapeUpDBProject\\Services\\Services.csproj"
+            "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Services\\Services.csproj": {
+              "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Services\\Services.csproj"
             }
           }
         }
