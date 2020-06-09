@@ -1,0 +1,4 @@
+G:\Bnot Elisheva\ShapeUpDBProject\Comon\obj\Debug\netcoreapp3.1\Comon.csprojAssemblyReference.cache
+G:\Bnot Elisheva\ShapeUpDBProject\Comon\obj\Debug\netcoreapp3.1\Comon.AssemblyInfoInputs.cache
+G:\Bnot Elisheva\ShapeUpDBProject\Comon\obj\Debug\netcoreapp3.1\Comon.AssemblyInfo.cs
+G:\Bnot Elisheva\ShapeUpDBProject\Comon\obj\Debug\netcoreapp3.1\Comon.csproj.CoreCompileInputs.cache

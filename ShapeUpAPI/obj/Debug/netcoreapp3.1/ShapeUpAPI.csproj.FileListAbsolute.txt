@@ -1,0 +1,5 @@
+G:\Bnot Elisheva\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp3.1\ShapeUpAPI.csprojAssemblyReference.cache
+G:\Bnot Elisheva\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp3.1\ShapeUpAPI.AssemblyInfoInputs.cache
+G:\Bnot Elisheva\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp3.1\ShapeUpAPI.AssemblyInfo.cs
+G:\Bnot Elisheva\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp3.1\ShapeUpAPI.csproj.CoreCompileInputs.cache
+G:\Bnot Elisheva\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp3.1\ShapeUpAPI.MvcApplicationPartsAssemblyInfo.cache

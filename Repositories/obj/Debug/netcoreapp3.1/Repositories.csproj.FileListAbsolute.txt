@@ -1,0 +1,12 @@
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp3.1\Repositories.deps.json
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp3.1\Repositories.runtimeconfig.json
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp3.1\Repositories.runtimeconfig.dev.json
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp3.1\Repositories.dll
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp3.1\Repositories.pdb
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp3.1\Repositories.csprojAssemblyReference.cache
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp3.1\Repositories.AssemblyInfoInputs.cache
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp3.1\Repositories.AssemblyInfo.cs
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp3.1\Repositories.csproj.CoreCompileInputs.cache
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp3.1\Repositories.dll
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp3.1\Repositories.pdb
+G:\Bnot Elisheva\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp3.1\Repositories.genruntimeconfig.cache
