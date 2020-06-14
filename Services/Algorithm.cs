@@ -290,11 +290,11 @@ namespace Services
             point = new PointClass(Math.Round(point.X, 1), Math.Round(point.Y, 1));
             foreach (var item in statinaryPoints)
             {
-                if (Math.Round(point.X, 0) == Math.Round(item.X, 0) && Math.Round(point.Y, 0) == Math.Round(item.Y, 0)) return false;
+                if (Math.Round(point.X, 1) == Math.Round(item.X, 1) && Math.Round(point.Y, 1) == Math.Round(item.Y, 1)) return false;
             }
             foreach (var item in orbitingPoints)
             {
-                if (Math.Round(point.X, 0) == Math.Round(item.X, 0) && Math.Round(point.Y, 0) == Math.Round(item.Y, 0)) return false;
+                if (Math.Round(point.X, 1) == Math.Round(item.X, 1) && Math.Round(point.Y, 1) == Math.Round(item.Y, 1)) return false;
             }
             return true;
         }
@@ -548,8 +548,9 @@ namespace Services
             while (b && helperVector.Y - CountY >= 0)//gets distance that can move y
             {
                 CountY += .1;
-                Math.Round(CountY, 1);
-                for (int i = 0; i < Points.Length; i++) Points[i].Y -= .1;
+                double cy = Math.Round(CountY, 1);
+                CountY = cy;
+                for (int i = 0; i < Points.Length; i++) Points[i].Y = Math.Round(Points[i].Y- .1, 1);
                 if (!CanMove(myShapes, Points))
                 {
                     b = false;
@@ -557,7 +558,13 @@ namespace Services
                     break;
                 }
             }
-            if (b) CountY -= .1;
+            CountY -= .1;
+            CountY = Math.Round(CountY, 1);
+            if (CountY < 0)
+            {
+                CountY = 0;
+            }
+           
             if (CountY != 0) return true;
             return false;
         }
@@ -568,8 +575,9 @@ namespace Services
             while (b && helperVector.X - CountX >= 0)  //gets distance that can move left
             {
                 CountX += .1;
-                Math.Round(CountX, 1);
-                for (int i = 0; i < Points.Length; i++) Points[i].X -= .1;
+                double cx= Math.Round(CountX, 1);
+                CountX = cx;
+                for (int i = 0; i < Points.Length; i++) Points[i].X = Math.Round(Points[i].X- .1, 1);
                 if (!CanMove(myShapes, Points))
                 {
                     b = false;
@@ -577,11 +585,17 @@ namespace Services
                     break;
                 }
             }
-            if (b) CountX -= .1;
+            CountX -= .1;
+            CountX = Math.Round(CountX, 1);
+            if (CountX < 0)
+            {
+                CountX = 0;
+            }
+           
         }
 
-        //checks if shape can be moved to specific location
-        public bool CanMove(List<MyShapes> myShapes, PointClass[] Points)
+            //checks if shape can be moved to specific location
+            public bool CanMove(List<MyShapes> myShapes, PointClass[] Points)
         {
             // PointClass p1, q1, p2, q2;
             for (int i = 0; i < myShapes.Count; i++)

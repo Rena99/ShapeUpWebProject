@@ -21,6 +21,14 @@ namespace ShapeUpAPI
             services.AddShapeUpService();
             //services.AddScoped<IShapeUpService, ShapeUpService>();
             //EventMemberService eventMemberService = context.HttpContext.RequestServices.GetService<EventMemberService>()
+            services.AddCors(options =>
+            {
+                options.AddPolicy("shapeup",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200");
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,11 +41,7 @@ namespace ShapeUpAPI
             }
 
             app.UseMvc();
-
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
+            app.UseCors();
         }
     }
 }

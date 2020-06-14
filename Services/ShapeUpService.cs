@@ -4,6 +4,7 @@ using Repositories.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Services
 {
@@ -13,39 +14,39 @@ namespace Services
 
         public ShapeUpService(IShapeUpRepository repository) => this.repository = repository;
 
-        public Members AddMember(string name, string password, string email) => repository.AddMember(name, password, email);
+        public async Task<Members> AddMember(Members member) => await repository.AddMember(member);
 
-        public Members GetMember(string name, string password) => repository.GetMember(name, password);
+        public async Task<Members> GetMember(string name, string password) => await repository.GetMember(name, password);
 
-        public Projects AddProject(int id, string name, DateTime oDate, DateTime dDate) => repository.AddProject(id, name, oDate, dDate);
+        public Projects AddProject(Projects p) => repository.AddProject(p);
 
         public Projects GetProject(int id) => repository.GetProject(id);
 
-        public Projects EditProjectTitle(int id, string name, DateTime? o, DateTime? d, bool? s) => repository.EditProjectTitle(id, name, o, d, s);
+        public Projects EditProjectTitle(Projects p) => repository.EditProjectTitle(p);
 
         public void DeleteProject(int id) => repository.DeleteProject(id);
 
-        public Shapes AddShape(int pid, bool area, int unit, params Point[] coordinates) => repository.AddShape(pid, area, unit, coordinates);
+        public Shapes AddShape(Shapes s, int pid) => repository.AddShape(s, pid);
 
         public Shapes GetShape(int i) => repository.GetShape(i);
 
-        public Shapes EditShape(int id, int cpid, int pid, bool a, int u, params Point[] c) => repository.EditShape(id, cpid, pid, a, u, c);
+        public Shapes EditShape(Shapes s, int pid) => repository.EditShape(s, pid);
 
         public void DeleteShape(int id, int cpid)=>repository.DeleteShape(id, cpid);
 
         public bool Run(int id)
         {
             Projects p = GetProject(id);
-            //if (p.Result.Count > 0) return true;
+            if (p.Result.Count > 0) return true;
             List<MyShapes> myShapes = new List<MyShapes>();
             MyShapes area = new MyShapes();
             foreach (var item in p.ProjectShapeConn)
             {
-                if (item.Shape.Area==true) area = new MyShapes(item.Shape.Id, item.Shape.Unit, item.Shape.Point);
-                else myShapes.Add(new MyShapes(item.Shape.Id, item.Shape.Unit, item.Shape.Point));
+                Shapes s = GetShape(item.ShapeId);
+                if (item.Shape.Area==true) area = new MyShapes(s.Id, s.Unit, s.Point);
+                else myShapes.Add(new MyShapes(s.Id, s.Unit, s.Point));
             }
             Algorithm algorithm = new Algorithm(myShapes, area);
-            //ClassToDelete classToDelete = new ClassToDelete(myShapes[0], myShapes[1]);
             if (algorithm.Succeeded == true)
             {
                 foreach (var item in myShapes)
@@ -60,9 +61,19 @@ namespace Services
 
         public void AddResult(double sx, double sy, double ax, double ay, int s, int p)=>repository.AddResult(sx, sy, ax, ay, s, p);
 
-        public List<Shapes> GetShapes(int id)
+        public List<Shape> GetShapes(int id)
         {
             return repository.GetShapes(id);
+        }
+
+        public List<Projects> GetProjects(int id)
+        {
+            return repository.GetProjects(id);
+        }
+
+        public async Task<Members> EditMember(Members members)
+        {
+            return await repository.EditMember(members);
         }
     }
 }

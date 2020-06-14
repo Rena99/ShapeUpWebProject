@@ -36,3 +36,15 @@ G:\Bnot Elisheva\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp2.1\Repositor
 G:\Bnot Elisheva\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp2.1\Repositories.dll
 G:\Bnot Elisheva\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp2.1\Repositories.pdb
 G:\Bnot Elisheva\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp2.1\Repositories.genruntimeconfig.cache
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp2.1\Repositories.deps.json
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp2.1\Repositories.runtimeconfig.json
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp2.1\Repositories.runtimeconfig.dev.json
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp2.1\Repositories.dll
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\bin\Debug\netcoreapp2.1\Repositories.pdb
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp2.1\Repositories.csprojAssemblyReference.cache
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp2.1\Repositories.AssemblyInfoInputs.cache
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp2.1\Repositories.AssemblyInfo.cs
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp2.1\Repositories.csproj.CoreCompileInputs.cache
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp2.1\Repositories.dll
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp2.1\Repositories.pdb
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Repositories\obj\Debug\netcoreapp2.1\Repositories.genruntimeconfig.cache

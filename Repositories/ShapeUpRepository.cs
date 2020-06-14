@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Repositories
 {
@@ -14,43 +15,43 @@ namespace Repositories
         {
             this.context = context;
         }
-        public Members AddMember(string name, string password, string email)
+        public async Task<Members> AddMember(Members members)
         {
-            Members members = new Members { UserName = name, UserPassword = password, Email = email };
+            //Members members = new Members { UserName = name, UserPassword = password, Email = email };
             context.Members.Add(members);
             context.SaveChanges();
-            return GetMember(name, password);
+            return await GetMember(members.UserName, members.UserPassword);
         }
-        public Members GetMember(string name, string password)
+        public async Task<Members> GetMember(string name, string password)
         {
-            return context.Members.Include(m=>m.Projects).FirstOrDefault(m => m.UserName.Equals(name) && m.UserPassword.Equals(password));
+            return await context.Members.FirstOrDefaultAsync(m => m.UserName.Equals(name) && m.UserPassword.Equals(password));
         }
-        public Projects AddProject(int id, string name, DateTime oDate, DateTime dDate)
+        public Projects AddProject(Projects project)
         {
             foreach (var p in context.Projects)
             {
-                if (p.ProjectName.Equals(name))
+                if (p.ProjectName.Equals(project.ProjectName))
                 {
                     return null;
                 }
             }
-            context.Projects.Add(new Projects { MemberId = id, ProjectName = name, OrderDate = oDate, DueDate = dDate });
+            context.Projects.Add(project);
             context.SaveChanges();
             return context.Projects.OrderByDescending(q => q.Id).FirstOrDefault();
         }
         public Projects GetProject(int id)
         {
-            return context.Projects.FirstOrDefault(p => p.Id == id);
+            return context.Projects.Include(p=>p.ProjectShapeConn).FirstOrDefault(p => p.Id == id);
 
         }
-        public Projects EditProjectTitle(int id, string name, DateTime? o, DateTime? d, bool? s)
+        public Projects EditProjectTitle(Projects project)
         {
-            context.Projects.FirstOrDefault(p => p.Id == id).ProjectName = name;
-            context.Projects.FirstOrDefault(p => p.Id == id).OrderDate = o;
-            context.Projects.FirstOrDefault(p => p.Id == id).DueDate = d;
-            context.Projects.FirstOrDefault(p => p.Id == id).ProjectStatus = s;
+            context.Projects.FirstOrDefault(p => p.Id == project.Id).ProjectName = project.ProjectName;
+            context.Projects.FirstOrDefault(p => p.Id == project.Id).OrderDate = project.OrderDate;
+            context.Projects.FirstOrDefault(p => p.Id == project.Id).DueDate = project.DueDate;
+            context.Projects.FirstOrDefault(p => p.Id == project.Id).ProjectStatus = project.ProjectStatus;
             context.SaveChanges();
-            return GetProject(id);
+            return GetProject(project.Id);
         }
         public void DeleteProject(int id)
         {
@@ -69,11 +70,11 @@ namespace Repositories
             context.Projects.Remove(p);
             context.SaveChanges();
         }
-        public Shapes AddShape(int pid, bool area, int unit, params Point[] coordinates)
+        public Shapes AddShape(Shapes s, int pid)
         {
-            context.Shapes.Add(new Shapes { Area = area, Unit = unit});
+            context.Shapes.Add(s);
             context.ProjectShapeConn.Add(new ProjectShapeConn { ProjectId = pid, ShapeId = context.Shapes.Last().Id });
-            foreach(var point in coordinates)
+            foreach(var point in s.Point)
             {
                 context.Point.Add(new Point { X = point.X, Y = point.Y, ShapeId = context.Shapes.Last().Id });
             }
@@ -87,31 +88,28 @@ namespace Repositories
         }
         public Shapes GetShape(int i)
         {
-            return context.Shapes.FirstOrDefault(s => s.Id == i);
+            return context.Shapes.Include(s=>s.Point).FirstOrDefault(s => s.Id == i);
         }
-        public Shapes EditShape(int id, int cpid, int pid, bool a, int u, params Point[] c)
+        public Shapes EditShape(Shapes shape, int pid)
         {
             foreach(var s in context.Point)
             {
-                if (s.ShapeId == id) context.Point.Remove(s);
+                if (s.ShapeId == shape.Id) context.Point.Remove(s);
             }
-            foreach (var s in c)
+            foreach (var s in shape.Point)
             {
-                context.Point.Add(new Point { ShapeId=id, X=s.X, Y=s.Y});
+                context.Point.Add(new Point { ShapeId= shape.Id, X=s.X, Y=s.Y});
             }
-            if (cpid != pid)
-            {
-                context.ProjectShapeConn.FirstOrDefault(p => p.ShapeId == id && p.ProjectId == cpid).ProjectId=pid;
-            }
+            context.ProjectShapeConn.FirstOrDefault(p => p.ShapeId == shape.Id && p.ProjectId == pid).ProjectId=pid;
             Projects pr = GetProject(pid);
             foreach (var item in pr.Result)
             {
                 context.Result.Remove(item);
             }
-            context.Shapes.FirstOrDefault(p => p.Id == id).Area = a;
-            context.Shapes.FirstOrDefault(p => p.Id == id).Unit = u;
+            context.Shapes.FirstOrDefault(p => p.Id == shape.Id).Area = shape.Area;
+            context.Shapes.FirstOrDefault(p => p.Id == shape.Id).Unit = shape.Unit;
             context.SaveChanges();
-            return GetShape(id);
+            return GetShape(shape.Id);
         }
         public void DeleteShape(int id, int cpid)
         {
@@ -140,14 +138,56 @@ namespace Repositories
             context.SaveChanges();
         }
 
-        public List<Shapes> GetShapes(int id)
+        public List<Shape> GetShapes(int id)
         {
-            List<Shapes> shapes = new List<Shapes>();
+            List<Shape> shapes = new List<Shape>();
             foreach (var item in context.ProjectShapeConn)
             {
-                if (item.ProjectId == id) shapes.Add(item.Shape);
+                if (item.ProjectId == id)
+                {
+                    Shapes shape=context.Shapes.Include(s=>s.Point).Include(s=>s.Result).FirstOrDefault(s => s.Id == item.ShapeId);
+                    List<PointMap> points = new List<PointMap>();
+                    foreach (var p in shape.Point)
+                    {
+                        points.Add(new PointMap(p.Id, p.X, p.Y));
+                    }
+                    Results result=new Results();
+                    foreach (var r in shape.Result)
+                    {
+                        if (r.ProjectId == id)
+                        {
+                            result =new Results(r.Id, r.PointOfShapeX, r.PointOfShapeY, r.PointOnAreaX, r.PointOnAreaY);
+                            break;
+                        }
+                    }
+                    shapes.Add(new Shape(shape.Id, shape.Area, shape.Unit, points, result));
+                }
             }
             return shapes;
+        }
+
+        public List<Projects> GetProjects(int id)
+        {
+            List<Projects> projects = new List<Projects>();
+            foreach (var item in context.Projects)
+            {
+                if (item.MemberId == id) projects.Add(item);
+            }
+            return projects;
+        }
+
+        public async Task<Members> EditMember(Members members)
+        {
+            Members m = null;
+            foreach (var item in context.Members)
+            {
+                if (item.Email.Equals(members.Email) && item.UserName.Equals(members.UserName))
+                {
+                    item.UserPassword = members.UserPassword;
+                    m = item;
+                }
+            }
+            return m;
         }
     }
 }

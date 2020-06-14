@@ -17,10 +17,8 @@ namespace Comon
             Width = SetWidth(points);
             Height = SetHeight(points);
             Points = SetPoints(points);
-            //Vectors = setVectors(Points);
             MinX = SetMinX(points);
             MinY = SetMinY(points);
-            //LinearEquation = setEquations();
             PlacedPoints = new PointClass[Points.Length];
         }
         public int Id { get; set; }
@@ -52,42 +50,7 @@ namespace Comon
             }
             return Points;
         }
-        //public double[][] LinearEquation { get; set; }
-        //public double[][] setEquations()
-        //{
-        //    //y=mx+b
-        //    //0-m, 1=b, 2=vertical
-        //    double[][] equations = new double[Points.Length][];
-        //    int j = 0;
-        //    for (int i = 1; i < Points.Length; i++)
-        //    {
-        //        equations[j] = new double[3];
-        //        if (Points[i - 1].X == Points[i].X)
-        //        {
-        //            equations[j][0] = Points[i].X;
-        //            equations[j][1] = 0;
-        //            equations[j++][2] = 1;
-        //            continue;
-        //        }
-        //        equations[j][0] = (Points[i - 1].Y - Points[i].Y) / (Points[i - 1].X - Points[i].X);
-        //        equations[j][1] = -(equations[j][0] * Points[i].X) + Points[i].Y;
-        //        equations[j++][2] = 0;
-        //    }
-        //    equations[j] = new double[3];
-        //    if (Points[Points.Length - 1].X == Points[0].X)
-        //    {
-        //        equations[j][0] = Points[0].X;
-        //        equations[j][1] = 0;
-        //        equations[j++][2] = 1;
-        //    }
-        //    else
-        //    {
-        //        equations[j][0] = (Points[Points.Length - 1].Y - Points[0].Y) / (Points[Points.Length - 1].X - Points[0].X);
-        //        equations[j][1] =- (equations[j][0] * Points[0].X) + Points[0].Y;
-        //        equations[j++][2] = 0;
-        //    }
-        //    return equations;
-        //}
+        
         public double MinX { get; set; }
         public double SetMinX(ICollection<Point> points)
         {

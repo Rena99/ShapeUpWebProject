@@ -10,3 +10,15 @@ G:\Bnot Elisheva\ShapeUpDBProject\Comon\bin\Debug\netcoreapp2.1\Repositories.dll
 G:\Bnot Elisheva\ShapeUpDBProject\Comon\bin\Debug\netcoreapp2.1\Repositories.pdb
 G:\Bnot Elisheva\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.csprojAssemblyReference.cache
 G:\Bnot Elisheva\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.csproj.CopyComplete
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\bin\Debug\netcoreapp2.1\Comon.deps.json
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\bin\Debug\netcoreapp2.1\Comon.dll
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\bin\Debug\netcoreapp2.1\Comon.pdb
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\bin\Debug\netcoreapp2.1\Repositories.dll
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\bin\Debug\netcoreapp2.1\Repositories.pdb
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.csprojAssemblyReference.cache
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.AssemblyInfoInputs.cache
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.AssemblyInfo.cs
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.csproj.CoreCompileInputs.cache
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.csproj.CopyComplete
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.dll
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.pdb
