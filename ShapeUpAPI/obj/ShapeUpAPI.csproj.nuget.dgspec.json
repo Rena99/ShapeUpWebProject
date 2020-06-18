@@ -26,11 +26,7 @@
         },
         "frameworks": {
           "netcoreapp2.1": {
-            "projectReferences": {
-              "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj": {
-                "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -42,6 +38,14 @@
       "frameworks": {
         "netcoreapp2.1": {
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
               "version": "[2.1.14, )"
@@ -89,7 +93,11 @@
         },
         "frameworks": {
           "netcoreapp2.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj": {
+                "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -101,6 +109,14 @@
       "frameworks": {
         "netcoreapp2.1": {
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[2.1.14, )"
@@ -185,6 +201,14 @@
       "frameworks": {
         "netcoreapp2.1": {
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
               "version": "[2.1.14, )"
@@ -252,6 +276,14 @@
       "frameworks": {
         "netcoreapp2.1": {
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",

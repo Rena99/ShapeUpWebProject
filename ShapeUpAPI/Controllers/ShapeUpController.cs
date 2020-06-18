@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Comon;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
@@ -27,34 +28,51 @@ namespace ShapeUpAPI.Controllers
         public ShapeUpController(IShapeUpService service) => this.service = service;
 
         [HttpGet("Members/{name}/{password}")]
-        public async Task<Members> GetMembers(string name, string password) => await service.GetMember(name, password);
+        public async Task<MembersDTO> GetMembers(string name, string password) => await service.GetMember(name, password);
+
         [HttpPost("Members")]
-        public async Task<Members> AddMember([FromBody]Members members) => await service.AddMember(members);
+        public async Task<MembersDTO> AddMember([FromBody] Members members) => await service.AddMember(members);
+
         [HttpPost("Member")]
-        public async Task<Members> EditMember([FromBody] Members members) => await service.EditMember(members);
+        public MembersDTO EditMember([FromBody] Members members) => service.EditMember(members);
+
+
         [HttpPost("Projects")]
-        public Projects AddProject([FromBody] Projects projects) => service.AddProject(projects);
+        public async Task<ProjectsDTO> AddProject([FromBody] Projects projects) => await service.AddProject(projects);
+
         [HttpGet("Projects/{id}")]
-        public List<Projects> GetProjects(int id) => service.GetProjects(id);
+        public List<ProjectsDTO> GetProjects(int id) => service.GetProjects(id);
+
         [HttpGet("Project/{id}")]
-        public Projects GetProject(int id) => service.GetProject(id);
-        [HttpPost("Projects/{id}/{name}/{o}/{d}/{s}")]
-        public Projects EditProjectTitle([FromBody] Projects p) => service.EditProjectTitle(p);
+        public async Task<ProjectsDTO> GetProject(int id) => await service.GetProject(id);
+
+        [HttpPost("Projects")]
+        public async Task<ProjectsDTO> EditProjectTitle([FromBody] Projects p) => await service.EditProjectTitle(p);
+
         [HttpDelete("Projects/{id}")]
         public void DeleteProject(int id) => service.DeleteProject(id);
+
+
         [HttpPost("Shape/{pid}")]
-        public Shapes AddShape([FromBody] Shapes s, int pid)=>service.AddShape(s, pid);
+        public async Task<ShapesDTO> AddShape([FromBody] Shapes s, int pid)=> await service.AddShape(s, pid);
+
         [HttpGet("Shape/{id}")]
-        public Shapes GetShape(int id) => service.GetShape(id);
-        [HttpGet("Shapes/{id}")]
-        public List<Shape> GetShapes(int id) => service.GetShapes(id);
+        public async Task<ShapesDTO> GetShape(int id) => await service.GetShape(id);
+
+        [HttpGet("Shapes/{pid}")]
+        public async Task<List<ShapesDTO>> GetShapes(int pid) => await service.GetShapes(pid);
+
         [HttpPost("Shape/{pid}")]
-        public Shapes EditShape([FromBody] Shapes s, int pid) => service.EditShape(s, pid);
+        public async Task<ShapesDTO> EditShape([FromBody] Shapes s, int pid) => await service.EditShape(s, pid);
+
         [HttpDelete("Shape/{id}/{cpid}")]
         public void DeleteShape(int id, int cpid) => service.DeleteShape(id, cpid);
+
+
         [HttpGet("{id}")]
-        public bool Run(int id) => service.Run(id);
+        public async Task<bool> Run(int id) => await service.Run(id);
+
         [HttpGet("Result/{id}")]
-        public List<Result> GetResults(int id) => service.GetResult(id);
+        public async Task<List<ResultsDTO>> GetResults(int id) => await service.GetResult(id);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System;
-using Repositories.Models;
 
 namespace Comon
 {
@@ -10,7 +9,7 @@ namespace Comon
         {
 
         }
-        public MyShapes(int id, int unit, ICollection<Point> points)
+        public MyShapes(int id, int unit, ICollection<PointDTO> points)
         {
             Id = id;
             Unit = unit;
@@ -19,7 +18,7 @@ namespace Comon
             Points = SetPoints(points);
             MinX = SetMinX(points);
             MinY = SetMinY(points);
-            PlacedPoints = new PointClass[Points.Length];
+            PlacedPoints = new Points[Points.Length];
         }
         public int Id { get; set; }
         public int Unit { get; set; }
@@ -38,21 +37,21 @@ namespace Comon
                 }
             }
         }
-        public PointClass[] Points { get; set; }
-        public PointClass[] PlacedPoints { get; set; }
-        public PointClass[] SetPoints(ICollection<Point> points)
+        public Points[] Points { get; set; }
+        public Points[] PlacedPoints { get; set; }
+        public Points[] SetPoints(ICollection<PointDTO> points)
         {
             int i = 0;
-            PointClass[] Points = new PointClass[points.Count];
+            Points[] Points = new Points[points.Count];
             foreach (var item in points)
             {
-                Points[i++] = new PointClass((double)(item.X) * Measure - MinX, (double)(item.Y) * Measure - MinY);
+                Points[i++] = new Points((double)(item.X) * Measure - MinX, (double)(item.Y) * Measure - MinY);
             }
             return Points;
         }
         
         public double MinX { get; set; }
-        public double SetMinX(ICollection<Point> points)
+        public double SetMinX(ICollection<PointDTO> points)
         {
             decimal minx = -1;
             foreach (var item in points)
@@ -64,7 +63,7 @@ namespace Comon
 
         }
         public double MinY { get; set; }
-        public double SetMinY(ICollection<Point> points)
+        public double SetMinY(ICollection<PointDTO> points)
         {
             decimal miny = -1;
             foreach (var item in points)
@@ -82,7 +81,7 @@ namespace Comon
             }
         }
         public int Width { get; set; }
-        public int SetWidth(ICollection<Point> points)
+        public int SetWidth(ICollection<PointDTO> points)
         {
             decimal x = Int16.MaxValue, x2 = 0;
             foreach (var item in points)
@@ -93,7 +92,7 @@ namespace Comon
             return (int)(x2-x) * (int)Measure;
         }
         public int Height { get; set; }
-        public int SetHeight(ICollection<Point> points)
+        public int SetHeight(ICollection<PointDTO> points)
         {
             decimal y = Int16.MaxValue, y2 = 0;
             foreach (var item in points)
@@ -124,8 +123,8 @@ namespace Comon
                 return (one - two) / 2;
             }
         }
-        public PointClass PointOnArea { get; set; }
-        public PointClass IndexOfPoint { get; set; }
+        public Points PointOnArea { get; set; }
+        public Points IndexOfPoint { get; set; }
 
         //public VectorClass[] Vectors { get; set; }
 

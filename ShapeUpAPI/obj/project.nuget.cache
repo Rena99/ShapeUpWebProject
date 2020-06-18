@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "qS43bxrhCJ8xqVEREn8Vp6XiOGrCyv5ND9ENF9iq90VL7eJKyvVgMu+tBw7ym+w/f9PVAnR3dfJxMpx8XgkHbA==",
+  "dgSpecHash": "ozJye4Wii1Q0HbbFtcwyaMfcE2YZnrPbsRxouuaNT44BWYcbP/ZHXhLZUPw/0BD5a2neW5LbudvvJU4X7Feo8g==",
   "success": true,
   "projectFilePath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\ShapeUpAPI\\ShapeUpAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\rina lerner\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
+    "C:\\Users\\rina lerner\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\rina lerner\\.nuget\\packages\\castle.core\\4.2.1\\castle.core.4.2.1.nupkg.sha512",
     "C:\\Users\\rina lerner\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\rina lerner\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",

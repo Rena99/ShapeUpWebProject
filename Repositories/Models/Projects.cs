@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comon;
+using System;
 using System.Collections.Generic;
 
 namespace Repositories.Models

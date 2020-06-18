@@ -8,7 +8,7 @@ namespace Comon
     {
         public int shape { get; set; }
         public int Orbit { get; set; }
-        public PointClass PointOnA { get; set; }
+        public Points PointOnA { get; set; }
         public Pair()
         {
 

@@ -91,26 +91,26 @@ namespace Services
                     if (orbiting.Points[p].X < orbiting.Points[indexOfF].X) indexOfF = p;
                     else if (orbiting.Points[p].X == orbiting.Points[indexOfF].X && orbiting.Points[p].Y < orbiting.Points[indexOfF].Y) indexOfF = p;
                 }
-                PointClass indexOnA = new PointClass(0, area.Height - (area.Height - orbiting.Points[indexOfF].Y));
+                Points indexOnA = new Points(0, area.Height - (area.Height - orbiting.Points[indexOfF].Y));
                 PlaceOnArea(orbiting, indexOfF, indexOnA);
                 stationary = orbiting;
                 return true;
             }
             //step 2-place next shape
             int i = myShapes.Count-1;
-            PointClass OptimalPoint = new PointClass(-1, -1);
+            Points OptimalPoint = new Points(-1, -1);
             while (i >= 0)
             {
-                PointClass pointOnA = NTFFunctions(orbiting, myShapes[i], myShapes, area);
+                Points pointOnA = NTFFunctions(orbiting, myShapes[i], myShapes, area);
                 if (pointOnA != null)
                 {
                     if (OptimalPoint.X == -1)
                     {
-                        OptimalPoint = new PointClass(pointOnA.X, pointOnA.Y);
+                        OptimalPoint = new Points(pointOnA.X, pointOnA.Y);
                     }
                     else if (pointOnA.X < OptimalPoint.X || pointOnA.X == OptimalPoint.X && pointOnA.Y < OptimalPoint.Y)
                     {
-                        OptimalPoint = new PointClass(pointOnA.X, pointOnA.Y);
+                        OptimalPoint = new Points(pointOnA.X, pointOnA.Y);
                     }
                 }
                 i--;
@@ -121,19 +121,19 @@ namespace Services
             return true;
         }
 
-        private PointClass NTFFunctions(MyShapes orbiting, MyShapes stationary, List<MyShapes> myShapes, MyShapes area)
+        private Points NTFFunctions(MyShapes orbiting, MyShapes stationary, List<MyShapes> myShapes, MyShapes area)
         {
             List<Pair> pairs = NFPOptions(orbiting, stationary);
             EliminateOptions(pairs, myShapes, area, orbiting, stationary); 
             if (pairs.Count == 0) return null;
-            PointClass pointOnA;
+            Points pointOnA;
             do
             {
                 int optimal = GetOptimalLocation(pairs);
                 pointOnA = pairs[optimal].PointOnA;
                 LeftBottom(myShapes, orbiting, 0, ref pointOnA);
-                PointClass[] placedPoints = GetPoints(orbiting, pointOnA, 0);
-                if (placedPoints[GetMaxY(orbiting.Points)].Y > area.Height) pointOnA = new PointClass(-1, -1);
+                Points[] placedPoints = GetPoints(orbiting, pointOnA, 0);
+                if (placedPoints[GetMaxY(orbiting.Points)].Y > area.Height) pointOnA = new Points(-1, -1);
                 if (pointOnA.X == -1)
                 {
                     pairs.RemoveAt(optimal);
@@ -143,7 +143,7 @@ namespace Services
             return pointOnA;
         }
 
-        private int GetMaxY(PointClass[] points)
+        private int GetMaxY(Points[] points)
         {
             int MaxY = 0;
             for (int i = 1; i < points.Length; i++)
@@ -173,7 +173,7 @@ namespace Services
                         if (k != index) helperList.Add(MyShapes[k]);
                     for (int j = 0; j < helperList.Count; j++)
                     {
-                        PointClass pointOnA = NTFFunctions(MyShapes[index], helperList[j], helperList, area);
+                        Points pointOnA = NTFFunctions(MyShapes[index], helperList[j], helperList, area);
                         if (pointOnA != null)
                         {
                             if (pointOnA.X < MyShapes[index].PointOnArea.X || (pointOnA.X == MyShapes[index].PointOnArea.X && pointOnA.Y < MyShapes[index].PointOnArea.Y))
@@ -200,13 +200,13 @@ namespace Services
             }
             for (int i = 0; i < pairs.Count; i++)
             {
-                PointClass Trim = TrimTranslation(orbiting, statinary, pairs[i].shape, statinary.PlacedPoints[pairs[i].shape], pairs[i].Orbit);
+                Points Trim = TrimTranslation(orbiting, statinary, pairs[i].shape, statinary.PlacedPoints[pairs[i].shape], pairs[i].Orbit);
                 pairs[i].PointOnA = statinary.PlacedPoints[pairs[i].shape] - Trim;
-                PointClass[] points = GetPoints(orbiting, pairs[i].PointOnA, pairs[i].Orbit);
+                Points[] points = GetPoints(orbiting, pairs[i].PointOnA, pairs[i].Orbit);
                 pairs[i].PointOnA = points[0];
                 foreach (var point in points)
                 {
-                    PointClass p = new PointClass(Math.Round(point.X, 1), Math.Round(point.Y, 1));
+                    Points p = new Points(Math.Round(point.X, 1), Math.Round(point.Y, 1));
                     if(!LinesDoNotIntersect(statinary.PlacedPoints, points))
                     {
                         pairs.Remove(pairs[i--]);
@@ -217,17 +217,17 @@ namespace Services
             return pairs;
         }
 
-        private bool LinesDoNotIntersect(PointClass[] statinaryPoints, PointClass[] orbitingPoints)
+        private bool LinesDoNotIntersect(Points[] statinaryPoints, Points[] orbitingPoints)
         {
             for (int i = 0; i < statinaryPoints.Length; i++)
             {
-                PointClass p1 = statinaryPoints[i];
-                PointClass q1 = i == statinaryPoints.Length - 1 ? statinaryPoints[0] : statinaryPoints[i + 1];
+                Points p1 = statinaryPoints[i];
+                Points q1 = i == statinaryPoints.Length - 1 ? statinaryPoints[0] : statinaryPoints[i + 1];
                 for (int j = 0; j < orbitingPoints.Length; j++)
                 {
-                    PointClass p2 = orbitingPoints[j];
-                    PointClass q2 = j == orbitingPoints.Length - 1 ? orbitingPoints[0] : orbitingPoints[j + 1];
-                    if (LineSegementsIntersect(p1, q1, p2, q2, out PointClass intersection, false))
+                    Points p2 = orbitingPoints[j];
+                    Points q2 = j == orbitingPoints.Length - 1 ? orbitingPoints[0] : orbitingPoints[j + 1];
+                    if (LineSegementsIntersect(p1, q1, p2, q2, out Points intersection, false))
                     {
                         if (NotOnVertex(statinaryPoints, orbitingPoints, intersection)) return false;
                         else if (LineIsInside(p1, q1, orbitingPoints) || LineIsInside(p2, q2, statinaryPoints)) return false;
@@ -241,13 +241,13 @@ namespace Services
             return true;
         }
 
-        private bool LineIsInside(PointClass p1, PointClass q1, PointClass[] orbitingPoints)
+        private bool LineIsInside(Points p1, Points q1, Points[] orbitingPoints)
         {
             double x = (p1.X > q1.X) ? (p1.X - q1.X) / 2 + q1.X : (q1.X - p1.X) / 2 + p1.X;
             double y = ((p1.Y - q1.Y) / (p1.X - q1.X) *
                 (x - p1.X)) + p1.Y;
             if (p1.X == q1.X) y = (p1.Y > q1.Y) ? (p1.Y - q1.Y) / 2 + q1.Y : (q1.Y - p1.Y) / 2 + p1.Y;
-            PointClass vector = new PointClass(x, y);
+            Points vector = new Points(x, y);
             if (IsInside(orbitingPoints, orbitingPoints.Length, vector, Length, null, false)) return true;
             return false;
         }
@@ -257,7 +257,7 @@ namespace Services
         {
             for (int i = 0; i < pairs.Count; i++)
             {
-                PointClass[] points = GetPoints(orbiting, pairs[i].PointOnA, 0);
+                Points[] points = GetPoints(orbiting, pairs[i].PointOnA, 0);
                 bool removed = false;
                 foreach (var item in points)
                 {
@@ -285,9 +285,9 @@ namespace Services
             return optimal;
         }
 
-        private bool NotOnVertex(PointClass[] statinaryPoints, PointClass[] orbitingPoints, PointClass point)
+        private bool NotOnVertex(Points[] statinaryPoints, Points[] orbitingPoints, Points point)
         {
-            point = new PointClass(Math.Round(point.X, 1), Math.Round(point.Y, 1));
+            point = new Points(Math.Round(point.X, 1), Math.Round(point.Y, 1));
             foreach (var item in statinaryPoints)
             {
                 if (Math.Round(point.X, 1) == Math.Round(item.X, 1) && Math.Round(point.Y, 1) == Math.Round(item.Y, 1)) return false;
@@ -300,7 +300,7 @@ namespace Services
         }
 
         //places shape on area
-        private void PlaceOnArea(MyShapes myShape, int indexOfF, PointClass indexOnA)
+        private void PlaceOnArea(MyShapes myShape, int indexOfF, Points indexOnA)
         {
             myShape.PlacedPoints = GetPoints(myShape, indexOnA, indexOfF);
             myShape.PointOnArea = indexOnA;
@@ -308,17 +308,17 @@ namespace Services
         }
 
         //moves every vertex of shape to location on which will be placed
-        public PointClass[] GetPoints(MyShapes s, PointClass indexOnA, int indexOfF, PointClass trim = null)
+        public Points[] GetPoints(MyShapes s, Points indexOnA, int indexOfF, Points trim = null)
         {
-            if (trim == null) trim = new PointClass(0, 0);
+            if (trim == null) trim = new Points(0, 0);
             double difx = indexOnA.X - (s.Points[indexOfF].X + trim.X), diffy = indexOnA.Y - (s.Points[indexOfF].Y + trim.Y);
-            PointClass[] vector = new PointClass[s.Points.Length];
-            for (int i = 0; i < vector.Length; i++) vector[i] = new PointClass(s.Points[i].X + difx, s.Points[i].Y + diffy);
+            Points[] vector = new Points[s.Points.Length];
+            for (int i = 0; i < vector.Length; i++) vector[i] = new Points(s.Points[i].X + difx, s.Points[i].Y + diffy);
             return vector;
         }
 
         //checks if could places shape on this location
-        public bool CanPlace(List<MyShapes> myShapes, PointClass[] Points, int cShape, int INF)
+        public bool CanPlace(List<MyShapes> myShapes, Points[] Points, int cShape, int INF)
         {
             for (int i = 0; i < myShapes.Count; i++)
             {
@@ -333,7 +333,7 @@ namespace Services
         }
 
         // Given three colinear points p, q, r, the function checks if point q lies on line segment 'pr' 
-        static bool OnSegment(PointClass p, PointClass q, PointClass r)
+        static bool OnSegment(Points p, Points q, Points r)
         {
             if (q.X <= Math.Max(p.X, r.X) &&
                 q.X >= Math.Min(p.X, r.X) &&
@@ -347,7 +347,7 @@ namespace Services
 
         // To find orientation of ordered triplet (p, q, r). 
         // The function returns following values: 0 --> p, q and r are colinear, 1 --> Clockwise, 2 --> Counterclockwise 
-        static int Orientation(PointClass p, PointClass q, PointClass r)
+        static int Orientation(Points p, Points q, Points r)
         {
             double val = (q.Y - p.Y) * (r.X - q.X) - (q.X - p.X) * (r.Y - q.Y);
 
@@ -356,7 +356,7 @@ namespace Services
         }
 
         // The function that returns true if line segment 'p1q' and 'p2q2' intersect. 
-        static bool DoIntersect(PointClass p1, PointClass q1, PointClass p2, PointClass q2)
+        static bool DoIntersect(Points p1, Points q1, Points p2, Points q2)
         {
             // Find the four orientations needed for general and special cases 
             int o1 = Orientation(p1, q1, p2);
@@ -385,20 +385,20 @@ namespace Services
         }
 
         // Returns true if the point p lies inside the polygon[] with n vertices 
-        static bool IsInside(PointClass[] polygon, int n, PointClass p, int INF, PointClass o = null, bool collinear = true)
+        static bool IsInside(Points[] polygon, int n, Points p, int INF, Points o = null, bool collinear = true)
         {
-            PointClass extreme;
+            Points extreme;
             // There must be at least 3 vertices in polygon[] 
             if (n < 3) return false;
 
             // Create a point for line segment from p to infinite 
-            if (o != null && o.Y == p.Y) extreme = new PointClass(p.X, INF);
-            else extreme = new PointClass(INF, p.Y);
+            if (o != null && o.Y == p.Y) extreme = new Points(p.X, INF);
+            else extreme = new Points(INF, p.Y);
             foreach (var item in polygon)
             {
                 if (item.Y == p.Y && item.X >= p.X)
                 {
-                    extreme = new PointClass(p.X, INF);
+                    extreme = new Points(p.X, INF);
                     break;
                 }
             }
@@ -411,7 +411,7 @@ namespace Services
                 // Check if the line segment from 'p' to 'extreme' intersects with the line segment from 'polygon[i]' to 'polygon[next]' 
                 if (DoIntersect(polygon[i], polygon[next], p, extreme))
                 {
-                    if (LineSegementsIntersect(polygon[i], polygon[next], p, extreme, out PointClass intersect, false))
+                    if (LineSegementsIntersect(polygon[i], polygon[next], p, extreme, out Points intersect, false))
                     {
                         if (intersect.X == polygon[i].X && intersect.Y == polygon[i].Y) count--;
                     }
@@ -431,20 +431,20 @@ namespace Services
         }
 
         //trims translation vector
-        private PointClass TrimTranslation(MyShapes orbiting, MyShapes stationary, int inds, PointClass indexOnA, int indexOfP)
+        private Points TrimTranslation(MyShapes orbiting, MyShapes stationary, int inds, Points indexOnA, int indexOfP)
         {
             //moves shape to next point
-            PointClass[] Points = GetPoints(orbiting, indexOnA, indexOfP);
-            PointClass intersectPoint = new PointClass(0, 0);
+            Points[] Points = GetPoints(orbiting, indexOnA, indexOfP);
+            Points intersectPoint = new Points(0, 0);
             for (int i = 0; i < Points.Length; i++) //checks if at any point orbiting shape overlaps with stationary shape
             {
-                PointClass p1 = Points[i];
-                PointClass p2 = i == Points.Length - 1 ? Points[0] : Points[i + 1];
+                Points p1 = Points[i];
+                Points p2 = i == Points.Length - 1 ? Points[0] : Points[i + 1];
                 for (int j = 0; j < stationary.Points.Length; j++)
                 {
-                    PointClass q1 = stationary.PlacedPoints[j];
-                    PointClass q2 = j == stationary.Points.Length - 1 ? stationary.PlacedPoints[0] : stationary.PlacedPoints[j + 1];
-                    PointClass vector;
+                    Points q1 = stationary.PlacedPoints[j];
+                    Points q2 = j == stationary.Points.Length - 1 ? stationary.PlacedPoints[0] : stationary.PlacedPoints[j + 1];
+                    Points vector;
                     if (LineSegementsIntersect(q1, q2, p1, p2, out vector, false))
                     {
                         if (!(Math.Round(vector.X) == Math.Round(q1.X) && Math.Round(vector.Y) == Math.Round(q2.Y)) &&
@@ -452,8 +452,8 @@ namespace Services
                         !(Math.Round(vector.X) == Math.Round(p1.X) && Math.Round(vector.Y) == Math.Round(p1.Y)) &&
                         !(Math.Round(vector.X) == Math.Round(p2.X) && Math.Round(vector.Y) == Math.Round(p2.Y)))
                         {
-                            PointClass realVector = IsInside(stationary.Points, stationary.Points.Length, p2, Length) ?
-                                new PointClass(p2.X - vector.X, p2.Y - vector.Y) : new PointClass(q2.X - vector.X, q2.Y - vector.Y);
+                            Points realVector = IsInside(stationary.Points, stationary.Points.Length, p2, Length) ?
+                                new Points(p2.X - vector.X, p2.Y - vector.Y) : new Points(q2.X - vector.X, q2.Y - vector.Y);
                             if (intersectPoint.X == 0&&intersectPoint.Y==0)
                             {
                                 intersectPoint = realVector;
@@ -470,9 +470,9 @@ namespace Services
         }
 
         // checks if an intersection point was found
-        public static bool LineSegementsIntersect(PointClass p, PointClass p2, PointClass q, PointClass q2, out PointClass intersection, bool considerCollinearOverlapAsIntersect)
+        public static bool LineSegementsIntersect(Points p, Points p2, Points q, Points q2, out Points intersection, bool considerCollinearOverlapAsIntersect)
         {
-            intersection = new PointClass();
+            intersection = new Points();
             var r = p2 - p;
             var s = q2 - q;
             var rxs = r.Cross(s);
@@ -511,17 +511,17 @@ namespace Services
         }
 
         //moves shape to left-bottom most location
-        private void LeftBottom(List<MyShapes> myShapes, MyShapes shape, int indexOfS, ref PointClass vector)
+        private void LeftBottom(List<MyShapes> myShapes, MyShapes shape, int indexOfS, ref Points vector)
         {
-            PointClass helperPoint = new PointClass(vector.X, vector.Y);
+            Points helperPoint = new Points(vector.X, vector.Y);
             //places shape in current optimal location
             bool changed = true;
             while (changed)
             {
-                PointClass[] Points = GetPoints(shape, vector, indexOfS);
+                Points[] Points = GetPoints(shape, vector, indexOfS);
                 int MaxY = GetMaxY(Points);
                 double CountX = 0, CountY = 0; //saves distance that can move shape
-                PointClass HelperVector = new PointClass(Points[0].X, Points[0].Y);
+                Points HelperVector = new Points(Points[0].X, Points[0].Y);
                 for (int i = 1; i < Points.Length; i++)//gets smallest points of the shape 
                 {
                     if (Points[i].X < HelperVector.X) HelperVector.X = Points[i].X;
@@ -529,7 +529,7 @@ namespace Services
                 }
                 MoveLeft(HelperVector, ref CountX, Points, myShapes);
                 changed = MoveDown(HelperVector, ref CountY, Points, myShapes);
-                helperPoint -= new PointClass(Math.Round(CountX, 1), Math.Round(CountY, 1));
+                helperPoint -= new Points(Math.Round(CountX, 1), Math.Round(CountY, 1));
                 Points = GetPoints(shape, helperPoint, indexOfS);
                 if (Points[MaxY].Y > area.Height)
                 {
@@ -537,12 +537,12 @@ namespace Services
                     Points = GetPoints(shape, vector, indexOfS);
                     changed = MoveDown(HelperVector, ref CountY, Points, myShapes);
                 }
-                vector -= new PointClass(Math.Round(CountX, 1), Math.Round(CountY, 1));
-                vector = new PointClass(Math.Round(vector.X, 1), Math.Round(vector.Y, 1));
+                vector -= new Points(Math.Round(CountX, 1), Math.Round(CountY, 1));
+                vector = new Points(Math.Round(vector.X, 1), Math.Round(vector.Y, 1));
             } 
         }
 
-        private bool MoveDown(PointClass helperVector, ref double CountY, PointClass[] Points, List<MyShapes> myShapes)
+        private bool MoveDown(Points helperVector, ref double CountY, Points[] Points, List<MyShapes> myShapes)
         {
             bool b = true;
             while (b && helperVector.Y - CountY >= 0)//gets distance that can move y
@@ -569,7 +569,7 @@ namespace Services
             return false;
         }
 
-        private void MoveLeft(PointClass helperVector, ref double CountX, PointClass[] Points, List<MyShapes> myShapes)
+        private void MoveLeft(Points helperVector, ref double CountX, Points[] Points, List<MyShapes> myShapes)
         {
             bool b = true;
             while (b && helperVector.X - CountX >= 0)  //gets distance that can move left
@@ -595,7 +595,7 @@ namespace Services
         }
 
             //checks if shape can be moved to specific location
-            public bool CanMove(List<MyShapes> myShapes, PointClass[] Points)
+            public bool CanMove(List<MyShapes> myShapes, Points[] Points)
         {
             // PointClass p1, q1, p2, q2;
             for (int i = 0; i < myShapes.Count; i++)

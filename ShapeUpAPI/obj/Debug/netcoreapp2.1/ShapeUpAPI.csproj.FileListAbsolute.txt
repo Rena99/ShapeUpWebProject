@@ -76,7 +76,6 @@ C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\bin\De
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp2.1\ShapeUpAPI.csprojAssemblyReference.cache
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp2.1\ShapeUpAPI.AssemblyInfoInputs.cache
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp2.1\ShapeUpAPI.AssemblyInfo.cs
-C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp2.1\ShapeUpAPI.csproj.CoreCompileInputs.cache
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp2.1\ShapeUpAPI.RazorAssemblyInfo.cache
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp2.1\ShapeUpAPI.RazorAssemblyInfo.cs
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp2.1\ShapeUpAPI.RazorTargetAssemblyInfo.cache
@@ -84,3 +83,4 @@ C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\De
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp2.1\ShapeUpAPI.dll
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp2.1\ShapeUpAPI.pdb
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp2.1\ShapeUpAPI.genruntimeconfig.cache
+C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\ShapeUpAPI\obj\Debug\netcoreapp2.1\ShapeUpAPI.csproj.CoreCompileInputs.cache

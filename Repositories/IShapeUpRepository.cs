@@ -1,4 +1,5 @@
-﻿using Repositories.Models;
+﻿using Comon;
+using Repositories.Models;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
@@ -9,20 +10,23 @@ namespace Repositories
 {
     public interface IShapeUpRepository
     {
-        Task<Members> AddMember(Members members);
-        Task<Members> GetMember(string name, string password);
-        Projects AddProject(Projects p);
-        Projects GetProject(int id);
-        Projects EditProjectTitle(Projects p);
+        Task<MembersDTO> AddMember(Members members);
+        Task<MembersDTO> GetMember(string name, string password);
+        MembersDTO EditMember(Members members);
+        Task<ProjectsDTO> AddProject(Projects project);
+        Task<ProjectsDTO> GetProject(int id);
+        Task<Projects> GetProjectR(int id);
+        Task<ProjectsDTO> EditProjectTitle(Projects project);
         void DeleteProject(int id);
-        Shapes AddShape(Shapes s, int pid);
-        Shapes GetShape(int i);
-        Shapes EditShape(Shapes s, int pid);
+        List<ProjectsDTO> GetProjects(int id);
+        Task<List<ShapesDTO>> GetShapes(int id);
+        Task<ShapesDTO> AddShape(Shapes s, int pid);
+        Task<ShapesDTO> GetShape(int i);
+        Task<Shapes> GetShapeR(int i);
+        Task<ShapesDTO> EditShape(Shapes shape, int pid);
         void DeleteShape(int id, int cpid);
-        List<Result> GetResult(int id);
+        Task<List<PointDTO>> GetPoints(int id);
+        Task<List<ResultsDTO>> GetResult(int id);
         void AddResult(double sx, double sy, double ax, double ay, int s, int p);
-        List<Shape> GetShapes(int id);
-        List<Projects> GetProjects(int id);
-        Task<Members> EditMember(Members members);
     }
 }
