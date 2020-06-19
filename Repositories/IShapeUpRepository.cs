@@ -26,7 +26,7 @@ namespace Repositories
         Task<ShapesDTO> EditShape(Shapes shape, int pid);
         void DeleteShape(int id, int cpid);
         Task<List<PointDTO>> GetPoints(int id);
-        Task<List<ResultsDTO>> GetResult(int id);
+        Task<ResultsDTO> GetResult(int pid, int id);
         void AddResult(double sx, double sy, double ax, double ay, int s, int p);
     }
 }

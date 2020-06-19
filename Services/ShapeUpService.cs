@@ -76,9 +76,9 @@ namespace Services
         {
             return await repository.GetPoints(id);
         }
-        public async Task<List<ResultsDTO>> GetResult(int id)
+        public async Task<ResultsDTO> GetResult(int pid, int id)
         {
-            return await repository.GetResult(id);
+            return await repository.GetResult(pid, id);
         }
 
         public void AddResult(double sx, double sy, double ax, double ay, int s, int p)

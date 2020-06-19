@@ -185,15 +185,15 @@ namespace Repositories
             }
             return points;
         }
-        public async Task<List<ResultsDTO>> GetResult(int id)
+        public async Task<ResultsDTO> GetResult(int pid, int id)
         {
-            List<ResultsDTO> results = new List<ResultsDTO>();
-            Projects p = await context.Projects.FirstOrDefaultAsync(pr => pr.Id == id);
-            foreach (var item in p.Result)
+            Shapes s = await context.Shapes.FirstOrDefaultAsync(pr => pr.Id == id);
+            foreach (var item in s.Result)
             {
-                results.Add(mapper.Map<ResultsDTO>(item));
+                if(item.ProjectId==pid)
+                return mapper.Map<ResultsDTO>(item);
             }
-            return results;
+            return null;
         }
 
         public void AddResult(double sx, double sy, double ax, double ay, int s, int p)

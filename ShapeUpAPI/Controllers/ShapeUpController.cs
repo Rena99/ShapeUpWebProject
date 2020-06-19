@@ -72,7 +72,10 @@ namespace ShapeUpAPI.Controllers
         [HttpGet("{id}")]
         public async Task<bool> Run(int id) => await service.Run(id);
 
-        [HttpGet("Result/{id}")]
-        public async Task<List<ResultsDTO>> GetResults(int id) => await service.GetResult(id);
+        [HttpGet("Result/{pid}/{id}")]
+        public async Task<ResultsDTO> GetResults(int pid, int id) => await service.GetResult(pid, id);
+
+        [HttpGet("points/{id}")]
+        public async Task<List<PointDTO>> GetPoints(int id) => await service.GetPoints(id);
     }
 }
