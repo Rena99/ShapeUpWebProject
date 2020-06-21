@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Services\\Services.csproj": {}
+    "E:\\new project\\ShapeUpDBProject\\Services\\Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj": {
+    "E:\\new project\\ShapeUpDBProject\\Comon\\Comon.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj",
+        "projectUniqueName": "E:\\new project\\ShapeUpDBProject\\Comon\\Comon.csproj",
         "projectName": "Comon",
-        "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj",
-        "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\obj\\",
+        "projectPath": "E:\\new project\\ShapeUpDBProject\\Comon\\Comon.csproj",
+        "packagesPath": "C:\\Users\\This_User\\.nuget\\packages\\",
+        "outputPath": "E:\\new project\\ShapeUpDBProject\\Comon\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\This_User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,17 +74,20 @@
         }
       }
     },
-    "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj": {
+    "E:\\new project\\ShapeUpDBProject\\Repositories\\Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
+        "projectUniqueName": "E:\\new project\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
         "projectName": "Repositories",
-        "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
-        "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\obj\\",
+        "projectPath": "E:\\new project\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
+        "packagesPath": "C:\\Users\\This_User\\.nuget\\packages\\",
+        "outputPath": "E:\\new project\\ShapeUpDBProject\\Repositories\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\This_User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -94,8 +100,8 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj": {
-                "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj"
+              "E:\\new project\\ShapeUpDBProject\\Comon\\Comon.csproj": {
+                "projectPath": "E:\\new project\\ShapeUpDBProject\\Comon\\Comon.csproj"
               }
             }
           }
@@ -160,17 +166,20 @@
         }
       }
     },
-    "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Services\\Services.csproj": {
+    "E:\\new project\\ShapeUpDBProject\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Services\\Services.csproj",
+        "projectUniqueName": "E:\\new project\\ShapeUpDBProject\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Services\\obj\\",
+        "projectPath": "E:\\new project\\ShapeUpDBProject\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\This_User\\.nuget\\packages\\",
+        "outputPath": "E:\\new project\\ShapeUpDBProject\\Services\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\This_User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -183,11 +192,11 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj": {
-                "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj"
+              "E:\\new project\\ShapeUpDBProject\\Comon\\Comon.csproj": {
+                "projectPath": "E:\\new project\\ShapeUpDBProject\\Comon\\Comon.csproj"
               },
-              "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj": {
-                "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj"
+              "E:\\new project\\ShapeUpDBProject\\Repositories\\Repositories.csproj": {
+                "projectPath": "E:\\new project\\ShapeUpDBProject\\Repositories\\Repositories.csproj"
               }
             }
           }
