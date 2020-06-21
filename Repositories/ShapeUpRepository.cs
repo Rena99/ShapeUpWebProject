@@ -124,7 +124,8 @@ namespace Repositories
             try
             {
                 context.Shapes.Add(s);
-                context.ProjectShapeConn.Add(new ProjectShapeConn { ProjectId = pid, ShapeId = context.Shapes.Last().Id });
+                Shapes shapes = await context.Shapes.LastAsync();
+                context.ProjectShapeConn.Add(new ProjectShapeConn { ProjectId = pid, ShapeId = shapes.Id });
                 foreach (var point in s.Point)
                 {
                     context.Point.Add(new Point { X = point.X, Y = point.Y, ShapeId = context.Shapes.Last().Id });
@@ -135,7 +136,7 @@ namespace Repositories
                     context.Result.Remove(item);
                 }
                 context.SaveChanges();
-                return await GetCompleteShape(pid, context.Shapes.LastAsync().Id);
+                return await GetCompleteShape(pid, shapes.Id);
             }
             catch (Exception ex)
             {
@@ -163,7 +164,8 @@ namespace Repositories
             {
                 context.Point.Add(new Point { ShapeId = shape.Id, X = s.X, Y = s.Y });
             }
-            context.ProjectShapeConn.FirstOrDefault(p => p.ShapeId == shape.Id && p.ProjectId == pid).ProjectId = pid;
+            ProjectShapeConn psc = await context.ProjectShapeConn.FirstOrDefaultAsync(p => p.ShapeId == shape.Id && p.ProjectId == pid);
+            psc.ProjectId = pid;
             Projects pr = await context.Projects.FirstOrDefaultAsync(p => p.Id == pid);
             foreach (var item in pr.Result)
             {
