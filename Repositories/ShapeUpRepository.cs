@@ -201,5 +201,36 @@ namespace Repositories
             context.Result.Add(new Result { PointOfShapeX = (decimal)sx, PointOfShapeY = (decimal)sy, PointOnAreaX = (decimal)ax, PointOnAreaY = (decimal)ay, ShapeId = s, ProjectId = p });
             context.SaveChanges();
         }
+
+        public async Task<List<CompleteShape>> GetCompleteShapes(int pid)
+        {
+            List<CompleteShape> completeShapes = new List<CompleteShape>();
+            CompleteShape completeShape = new CompleteShape();
+            List<PointDTO> pointDTOs = new List<PointDTO>();
+            Result result = new Result();
+            Projects p = await context.Projects.Include(pr=>pr.ProjectShapeConn).FirstOrDefaultAsync(pr => pr.Id == pid);
+            foreach (var item in p.ProjectShapeConn)
+            {
+                Shapes shapes = await context.Shapes.Include(S => S.Point).Include(S => S.Result).FirstOrDefaultAsync(S => S.Id == item.ShapeId);
+                foreach (var r in shapes.Result)
+                {
+                    if (r.ProjectId == pid)
+                    {
+                        result = r;
+                        break;
+                    }
+                }
+                foreach (var pnt in shapes.Point)
+                {
+                    pointDTOs.Add(mapper.Map<PointDTO>(pnt));
+                }
+                completeShape = new CompleteShape(mapper.Map<ShapesDTO>(shapes), pointDTOs, mapper.Map<ResultsDTO>(result));
+                pointDTOs = new List<PointDTO>();
+                completeShapes.Add(completeShape);
+         
+
+            }
+            return completeShapes;
+        }
     }
 }

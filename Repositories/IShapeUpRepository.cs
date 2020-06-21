@@ -28,5 +28,6 @@ namespace Repositories
         Task<List<PointDTO>> GetPoints(int id);
         Task<ResultsDTO> GetResult(int pid, int id);
         void AddResult(double sx, double sy, double ax, double ay, int s, int p);
+        Task<List<CompleteShape>> GetCompleteShapes(int pid);
     }
 }

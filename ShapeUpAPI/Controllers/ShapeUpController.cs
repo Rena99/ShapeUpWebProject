@@ -63,7 +63,11 @@ namespace ShapeUpAPI.Controllers
         public async Task<List<ShapesDTO>> GetShapes(int pid) => await service.GetShapes(pid);
 
         [HttpPost("Shapes/{pid}")]
+<<<<<<< HEAD
         public async Task<ShapesDTO> EditShape(int pid, [FromBody] Shapes s) => await service.EditShape(s, pid);
+=======
+        public async Task<ShapesDTO> EditShape([FromBody] Shapes s, int pid) => await service.EditShape(s, pid);
+>>>>>>> ac8ce2471deed963689150122cfccf94ce244c7b
 
         [HttpDelete("Shape/{id}/{cpid}")]
         public void DeleteShape(int id, int cpid) => service.DeleteShape(id, cpid);
@@ -77,5 +81,9 @@ namespace ShapeUpAPI.Controllers
 
         [HttpGet("points/{id}")]
         public async Task<List<PointDTO>> GetPoints(int id) => await service.GetPoints(id);
+
+
+        [HttpGet("fullshape/{pid}")]
+        public async Task<List<CompleteShape>> GetCompleteShapes(int pid) => await service.GetCompleteShapes(pid);
     }
 }

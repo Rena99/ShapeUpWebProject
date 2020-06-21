@@ -28,7 +28,11 @@ namespace Repositories.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+<<<<<<< HEAD
                 optionsBuilder.UseSqlServer("Data Source=(LocalDB)/MSSQLLocalDB;AttachDbFilename=E:/new project/ShapeUpDBProject/DB/ShapeUp.mdf;Integrated Security=True;Connect Timeout=30");
+=======
+                optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\DB\ShapeUp.mdf;Integrated Security=True;Connect Timeout=30");
+>>>>>>> ac8ce2471deed963689150122cfccf94ce244c7b
             }
         }
 
