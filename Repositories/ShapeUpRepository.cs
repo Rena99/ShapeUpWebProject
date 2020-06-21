@@ -123,20 +123,17 @@ namespace Repositories
         {
             try
             {
+                List<Point> points = OrderPoints(s);
+                s.Point = points;
                 context.Shapes.Add(s);
-                
-                foreach (var point in s.Point)
-                {
-                    context.Point.Add(new Point { X = point.X, Y = point.Y, ShapeId = context.Shapes.Last().Id });
-                }
+                context.SaveChanges();
+                Shapes shapes = await context.Shapes.LastAsync();
                 Projects p = await context.Projects.FirstOrDefaultAsync(pr => pr.Id == pid);
                 foreach (var item in p.Result)
                 {
                     context.Result.Remove(item);
                 }
-                context.SaveChanges();
-                Shapes shapes = await context.Shapes.LastAsync();
-                context.ProjectShapeConn.Add(new ProjectShapeConn { ProjectId = pid, ShapeId = shapes.Id }); 
+                context.ProjectShapeConn.Add(new ProjectShapeConn { ProjectId = pid, ShapeId = shapes.Id });
                 context.SaveChanges();
                 return await GetCompleteShape(pid, shapes.Id);
             }
@@ -147,6 +144,39 @@ namespace Repositories
             }
 
         }
+
+        private static List<Point> OrderPoints(Shapes s)
+        {
+            List<Point> tpoints = new List<Point>();
+            List<Point> points = new List<Point>();
+            foreach (var item in s.Point)
+            {
+                tpoints.Add(item);
+            }
+
+            int c = 0;
+            for (int i = 1; i < tpoints.Count; i++)
+            {
+                if (tpoints[i].Y < tpoints[c].Y)
+                {
+                    c = i;
+                }
+                else if (tpoints[i].Y == tpoints[c].Y && tpoints[i].X < tpoints[c].X)
+                {
+                    c = i;
+                }
+            }
+            for (int i = c; i < tpoints.Count; i++)
+            {
+                points.Add(tpoints[i]);
+            }
+            for (int i = 0; i < c; i++)
+            {
+                points.Add(tpoints[i]);
+            }
+            return points;
+        }
+
         public async Task<ShapesDTO> GetShape(int i)
         {
             Shapes sh = await context.Shapes.FirstOrDefaultAsync(s => s.Id == i);
@@ -162,10 +192,12 @@ namespace Repositories
             {
                 if (s.ShapeId == shape.Id) context.Point.Remove(s);
             }
-            foreach (var s in shape.Point)
+            List<Point> points = OrderPoints(shape);
+            foreach (var s in points)
             {
-                context.Point.Add(new Point { ShapeId = shape.Id, X = s.X, Y = s.Y });
+                context.Add(new Point() { ShapeId=shape.Id, X=s.X, Y=s.Y});
             }
+            shape.Point = points;
             ProjectShapeConn psc = await context.ProjectShapeConn.FirstOrDefaultAsync(p => p.ShapeId == shape.Id && p.ProjectId == pid);
             psc.ProjectId = pid;
             Projects pr = await context.Projects.FirstOrDefaultAsync(p => p.Id == pid);
