@@ -20,14 +20,15 @@ namespace Repositories
         void DeleteProject(int id);
         List<ProjectsDTO> GetProjects(int id);
         Task<List<ShapesDTO>> GetShapes(int id);
-        Task<ShapesDTO> AddShape(Shapes s, int pid);
+        Task<CompleteShape> AddShape(Shapes s, int pid);
         Task<ShapesDTO> GetShape(int i);
         Task<Shapes> GetShapeR(int i);
-        Task<ShapesDTO> EditShape(Shapes shape, int pid);
+        Task<CompleteShape> EditShape(Shapes shape, int pid);
         void DeleteShape(int id, int cpid);
         Task<List<PointDTO>> GetPoints(int id);
         Task<ResultsDTO> GetResult(int pid, int id);
         void AddResult(double sx, double sy, double ax, double ay, int s, int p);
         Task<List<CompleteShape>> GetCompleteShapes(int pid);
+        Task<CompleteShape> GetCompleteShape(int pid, int id);
     }
 }

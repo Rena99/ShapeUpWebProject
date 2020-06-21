@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Repositories
 {
-    public class ShapeUpRepository:IShapeUpRepository
+    public class ShapeUpRepository : IShapeUpRepository
     {
         private ShapeUp context;
         private IMapper mapper;
@@ -43,7 +43,7 @@ namespace Repositories
                     m = item;
                 }
             }
-            return mapper.Map<MembersDTO>(m); 
+            return mapper.Map<MembersDTO>(m);
         }
         public async Task<ProjectsDTO> AddProject(Projects project)
         {
@@ -61,13 +61,13 @@ namespace Repositories
         }
         public async Task<ProjectsDTO> GetProject(int id)
         {
-            Projects pr= await context.Projects.FirstOrDefaultAsync(p => p.Id == id);
+            Projects pr = await context.Projects.FirstOrDefaultAsync(p => p.Id == id);
             return mapper.Map<ProjectsDTO>(pr);
 
         }
         public async Task<Projects> GetProjectR(int id)
         {
-            return await context.Projects.Include(p=>p.ProjectShapeConn).Include(p=>p.Result).FirstOrDefaultAsync(p => p.Id == id);
+            return await context.Projects.Include(p => p.ProjectShapeConn).Include(p => p.Result).FirstOrDefaultAsync(p => p.Id == id);
         }
         public async Task<ProjectsDTO> EditProjectTitle(Projects project)
         {
@@ -119,21 +119,30 @@ namespace Repositories
             return shapes;
         }
 
-        public async Task<ShapesDTO> AddShape(Shapes s, int pid)
+        public async Task<CompleteShape> AddShape(Shapes s, int pid)
         {
-            context.Shapes.Add(s);
-            context.ProjectShapeConn.Add(new ProjectShapeConn { ProjectId = pid, ShapeId = context.Shapes.Last().Id });
-            foreach(var point in s.Point)
+            try
             {
-                context.Point.Add(new Point { X = point.X, Y = point.Y, ShapeId = context.Shapes.Last().Id });
+                context.Shapes.Add(s);
+                context.ProjectShapeConn.Add(new ProjectShapeConn { ProjectId = pid, ShapeId = context.Shapes.Last().Id });
+                foreach (var point in s.Point)
+                {
+                    context.Point.Add(new Point { X = point.X, Y = point.Y, ShapeId = context.Shapes.Last().Id });
+                }
+                Projects p = await context.Projects.FirstOrDefaultAsync(pr => pr.Id == pid);
+                foreach (var item in p.Result)
+                {
+                    context.Result.Remove(item);
+                }
+                context.SaveChanges();
+                return await GetCompleteShape(pid, context.Shapes.LastAsync().Id);
             }
-            Projects p = await context.Projects.FirstOrDefaultAsync(pr=>pr.Id==pid);
-            foreach (var item in p.Result)
+            catch (Exception ex)
             {
-                context.Result.Remove(item);
+
+                throw;
             }
-            context.SaveChanges();
-            return mapper.Map<ShapesDTO>(context.Shapes.LastAsync());
+
         }
         public async Task<ShapesDTO> GetShape(int i)
         {
@@ -142,20 +151,20 @@ namespace Repositories
         }
         public async Task<Shapes> GetShapeR(int i)
         {
-            return await context.Shapes.Include(s=>s.Point).FirstOrDefaultAsync(s => s.Id == i);
+            return await context.Shapes.Include(s => s.Point).FirstOrDefaultAsync(s => s.Id == i);
         }
-        public async Task<ShapesDTO> EditShape(Shapes shape, int pid)
+        public async Task<CompleteShape> EditShape(Shapes shape, int pid)
         {
-            foreach(var s in context.Point)
+            foreach (var s in context.Point)
             {
                 if (s.ShapeId == shape.Id) context.Point.Remove(s);
             }
             foreach (var s in shape.Point)
             {
-                context.Point.Add(new Point { ShapeId= shape.Id, X=s.X, Y=s.Y});
+                context.Point.Add(new Point { ShapeId = shape.Id, X = s.X, Y = s.Y });
             }
-            context.ProjectShapeConn.FirstOrDefault(p => p.ShapeId == shape.Id && p.ProjectId == pid).ProjectId=pid;
-            Projects pr = await context.Projects.FirstOrDefaultAsync(p=>p.Id==pid);
+            context.ProjectShapeConn.FirstOrDefault(p => p.ShapeId == shape.Id && p.ProjectId == pid).ProjectId = pid;
+            Projects pr = await context.Projects.FirstOrDefaultAsync(p => p.Id == pid);
             foreach (var item in pr.Result)
             {
                 context.Result.Remove(item);
@@ -163,12 +172,12 @@ namespace Repositories
             context.Shapes.FirstOrDefault(p => p.Id == shape.Id).Area = shape.Area;
             context.Shapes.FirstOrDefault(p => p.Id == shape.Id).Unit = shape.Unit;
             context.SaveChanges();
-            return await GetShape(shape.Id);
+            return await GetCompleteShape(pid, shape.Id);
         }
         public async void DeleteShape(int id, int cpid)
         {
             context.ProjectShapeConn.Remove(context.ProjectShapeConn.FirstOrDefault(p => p.ShapeId == id && p.ProjectId == cpid));
-            Projects pr = await context.Projects.FirstOrDefaultAsync(p=>p.Id==id);
+            Projects pr = await context.Projects.FirstOrDefaultAsync(p => p.Id == id);
             foreach (var item in pr.Result)
             {
                 context.Result.Remove(item);
@@ -178,7 +187,7 @@ namespace Repositories
         public async Task<List<PointDTO>> GetPoints(int id)
         {
             List<PointDTO> points = new List<PointDTO>();
-            Shapes s = await context.Shapes.Include(sh=>sh.Point).FirstOrDefaultAsync(sh => sh.Id == id);
+            Shapes s = await context.Shapes.Include(sh => sh.Point).FirstOrDefaultAsync(sh => sh.Id == id);
             foreach (var item in s.Point)
             {
                 points.Add(mapper.Map<PointDTO>(item));
@@ -187,11 +196,11 @@ namespace Repositories
         }
         public async Task<ResultsDTO> GetResult(int pid, int id)
         {
-            Shapes s = await context.Shapes.Include(pr=>pr.Result).FirstOrDefaultAsync(pr => pr.Id == id);
+            Shapes s = await context.Shapes.Include(pr => pr.Result).FirstOrDefaultAsync(pr => pr.Id == id);
             foreach (var item in s.Result)
             {
-                if(item.ProjectId==pid)
-                return mapper.Map<ResultsDTO>(item);
+                if (item.ProjectId == pid)
+                    return mapper.Map<ResultsDTO>(item);
             }
             return null;
         }
@@ -208,7 +217,7 @@ namespace Repositories
             CompleteShape completeShape = new CompleteShape();
             List<PointDTO> pointDTOs = new List<PointDTO>();
             Result result = new Result();
-            Projects p = await context.Projects.Include(pr=>pr.ProjectShapeConn).FirstOrDefaultAsync(pr => pr.Id == pid);
+            Projects p = await context.Projects.Include(pr => pr.ProjectShapeConn).FirstOrDefaultAsync(pr => pr.Id == pid);
             foreach (var item in p.ProjectShapeConn)
             {
                 Shapes shapes = await context.Shapes.Include(S => S.Point).Include(S => S.Result).FirstOrDefaultAsync(S => S.Id == item.ShapeId);
@@ -227,10 +236,35 @@ namespace Repositories
                 completeShape = new CompleteShape(mapper.Map<ShapesDTO>(shapes), pointDTOs, mapper.Map<ResultsDTO>(result));
                 pointDTOs = new List<PointDTO>();
                 completeShapes.Add(completeShape);
-         
+
 
             }
             return completeShapes;
+        }
+
+        public async Task<CompleteShape> GetCompleteShape(int pid, int id)
+        {
+            CompleteShape completeShape = new CompleteShape();
+            List<PointDTO> pointDTOs = new List<PointDTO>();
+            Result result = new Result();
+            Shapes shapes = await context.Shapes.Include(S => S.Point).Include(S => S.Result).FirstOrDefaultAsync(S => S.Id == id);
+            if (shapes != null)
+            {
+                foreach (var r in shapes.Result)
+                {
+                    if (r.ProjectId == pid)
+                    {
+                        result = r;
+                        break;
+                    }
+                }
+                foreach (var pnt in shapes.Point)
+                {
+                    pointDTOs.Add(mapper.Map<PointDTO>(pnt));
+                }
+            }
+            completeShape = new CompleteShape(mapper.Map<ShapesDTO>(shapes), pointDTOs, mapper.Map<ResultsDTO>(result));
+            return completeShape;
         }
     }
 }

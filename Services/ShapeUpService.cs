@@ -56,7 +56,7 @@ namespace Services
             return await repository.GetShapes(id);
         }
 
-        public async Task<ShapesDTO> AddShape(Shapes s, int pid)
+        public async Task<CompleteShape> AddShape(Shapes s, int pid)
         {
             return await repository.AddShape(s, pid);
         }
@@ -64,7 +64,7 @@ namespace Services
         {
             return await repository.GetShape(i);
         }
-        public async Task<ShapesDTO> EditShape(Shapes shape, int pid)
+        public async Task<CompleteShape> EditShape(Shapes shape, int pid)
         {
             return await repository.EditShape(shape, pid);
         }
@@ -94,8 +94,13 @@ namespace Services
             foreach (var item in p.ProjectShapeConn)
             {
                 Shapes s = await repository.GetShapeR(item.ShapeId);
-                if (item.Shape.Area==true) area = new MyShapes(s.Id, s.Unit, (ICollection<PointDTO>)mapper.Map<PointDTO>(s.Point));
-                else myShapes.Add(new MyShapes(s.Id, s.Unit, (ICollection<PointDTO>)mapper.Map<PointDTO>(s.Point)));
+                List<PointDTO> pointDTOs = new List<PointDTO>();
+                foreach (var pnt in s.Point)
+                {
+                    pointDTOs.Add(mapper.Map<PointDTO>(pnt));
+                }
+                if (item.Shape.Area==true) area = new MyShapes(s.Id, s.Unit, pointDTOs);
+                else myShapes.Add(new MyShapes(s.Id, s.Unit, pointDTOs));
             }
             Algorithm algorithm = new Algorithm(myShapes, area);
             if (algorithm.Succeeded == true)
@@ -111,6 +116,11 @@ namespace Services
         public async Task<List<CompleteShape>> GetCompleteShapes(int pid)
         {
             return await repository.GetCompleteShapes(pid);
+        }
+
+        public async Task<CompleteShape> GetCompleteShape(int pid, int id)
+        {
+            return await repository.GetCompleteShape(pid, id);
         }
     }
 }
