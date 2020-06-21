@@ -81,7 +81,7 @@ namespace Repositories
         }
         public void DeleteProject(int id)
         {
-            Projects p = context.Projects.FirstOrDefault(pr => pr.Id == id);
+            Projects p = context.Projects.Include(pr=>pr.Result).FirstOrDefault(pr => pr.Id == id);
             foreach (var item in p.Result)
             {
                 context.Result.Remove(item);
@@ -128,7 +128,7 @@ namespace Repositories
                 context.Shapes.Add(s);
                 context.SaveChanges();
                 Shapes shapes = await context.Shapes.LastAsync();
-                Projects p = await context.Projects.FirstOrDefaultAsync(pr => pr.Id == pid);
+                Projects p = await context.Projects.Include(pr=>pr.Result).FirstOrDefaultAsync(pr => pr.Id == pid);
                 foreach (var item in p.Result)
                 {
                     context.Result.Remove(item);
@@ -153,7 +153,10 @@ namespace Repositories
             {
                 tpoints.Add(item);
             }
-
+            if (tpoints[1].X < tpoints[0].X || (tpoints[1].X == tpoints[0].X && tpoints[1].Y < tpoints[0].Y))
+            {
+                tpoints.Reverse();
+            }
             int c = 0;
             for (int i = 1; i < tpoints.Count; i++)
             {
@@ -166,6 +169,7 @@ namespace Repositories
                     c = i;
                 }
             }
+            
             for (int i = c; i < tpoints.Count; i++)
             {
                 points.Add(tpoints[i]);
@@ -200,7 +204,7 @@ namespace Repositories
             shape.Point = points;
             ProjectShapeConn psc = await context.ProjectShapeConn.FirstOrDefaultAsync(p => p.ShapeId == shape.Id && p.ProjectId == pid);
             psc.ProjectId = pid;
-            Projects pr = await context.Projects.FirstOrDefaultAsync(p => p.Id == pid);
+            Projects pr = await context.Projects.Include(p=>p.Result).FirstOrDefaultAsync(p => p.Id == pid);
             foreach (var item in pr.Result)
             {
                 context.Result.Remove(item);
@@ -213,7 +217,7 @@ namespace Repositories
         public void DeleteShape(int id, int cpid)
         {
             context.ProjectShapeConn.Remove(context.ProjectShapeConn.FirstOrDefault(p => p.ShapeId == id && p.ProjectId == cpid));
-            Projects pr = context.Projects.FirstOrDefault(p => p.Id == id);
+            Projects pr = context.Projects.Include(p=>p.Result).FirstOrDefault(p => p.Id == id);
             foreach (var item in pr.Result)
             {
                 context.Result.Remove(item);

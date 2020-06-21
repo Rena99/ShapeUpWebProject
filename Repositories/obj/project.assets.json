@@ -4984,23 +4984,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\This_User\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\rina lerner\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\new project\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
+      "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
       "projectName": "Repositories",
-      "projectPath": "E:\\new project\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
-      "packagesPath": "C:\\Users\\This_User\\.nuget\\packages\\",
-      "outputPath": "E:\\new project\\ShapeUpDBProject\\Repositories\\obj\\",
+      "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\Repositories.csproj",
+      "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Repositories\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\This_User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5013,8 +5009,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "E:\\new project\\ShapeUpDBProject\\Comon\\Comon.csproj": {
-              "projectPath": "E:\\new project\\ShapeUpDBProject\\Comon\\Comon.csproj"
+            "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj": {
+              "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj"
             }
           }
         }
