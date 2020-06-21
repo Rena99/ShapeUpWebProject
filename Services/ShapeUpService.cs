@@ -43,7 +43,7 @@ namespace Services
         {
             return await repository.EditProjectTitle(project);
         }
-        public async void DeleteProject(int id)
+        public void DeleteProject(int id)
         {
               repository.DeleteProject(id);
         }
@@ -68,7 +68,7 @@ namespace Services
         {
             return await repository.EditShape(shape, pid);
         }
-        public async void DeleteShape(int id, int cpid)
+        public void DeleteShape(int id, int cpid)
         {
             repository.DeleteShape(id, cpid);
         }

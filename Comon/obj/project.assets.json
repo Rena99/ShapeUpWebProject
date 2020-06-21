@@ -4387,19 +4387,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rina lerner\\.nuget\\packages\\": {}
+    "C:\\Users\\This_User\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj",
+      "projectUniqueName": "E:\\new project\\ShapeUpDBProject\\Comon\\Comon.csproj",
       "projectName": "Comon",
-      "projectPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\Comon.csproj",
-      "packagesPath": "C:\\Users\\rina lerner\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rina lerner\\Documents\\ShapeUPProject\\ShapeUpDBProject\\Comon\\obj\\",
+      "projectPath": "E:\\new project\\ShapeUpDBProject\\Comon\\Comon.csproj",
+      "packagesPath": "C:\\Users\\This_User\\.nuget\\packages\\",
+      "outputPath": "E:\\new project\\ShapeUpDBProject\\Comon\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\rina lerner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\This_User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

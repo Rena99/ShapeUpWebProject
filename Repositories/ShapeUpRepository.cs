@@ -79,9 +79,9 @@ namespace Repositories
             context.SaveChanges();
             return await GetProject(project.Id);
         }
-        public async void DeleteProject(int id)
+        public void DeleteProject(int id)
         {
-            Projects p = await context.Projects.FirstOrDefaultAsync(pr => pr.Id == id);
+            Projects p = context.Projects.FirstOrDefault(pr => pr.Id == id);
             foreach (var item in p.Result)
             {
                 context.Result.Remove(item);
@@ -124,8 +124,7 @@ namespace Repositories
             try
             {
                 context.Shapes.Add(s);
-                Shapes shapes = await context.Shapes.LastAsync();
-                context.ProjectShapeConn.Add(new ProjectShapeConn { ProjectId = pid, ShapeId = shapes.Id });
+                
                 foreach (var point in s.Point)
                 {
                     context.Point.Add(new Point { X = point.X, Y = point.Y, ShapeId = context.Shapes.Last().Id });
@@ -135,6 +134,9 @@ namespace Repositories
                 {
                     context.Result.Remove(item);
                 }
+                context.SaveChanges();
+                Shapes shapes = await context.Shapes.LastAsync();
+                context.ProjectShapeConn.Add(new ProjectShapeConn { ProjectId = pid, ShapeId = shapes.Id }); 
                 context.SaveChanges();
                 return await GetCompleteShape(pid, shapes.Id);
             }
@@ -176,10 +178,10 @@ namespace Repositories
             context.SaveChanges();
             return await GetCompleteShape(pid, shape.Id);
         }
-        public async void DeleteShape(int id, int cpid)
+        public void DeleteShape(int id, int cpid)
         {
             context.ProjectShapeConn.Remove(context.ProjectShapeConn.FirstOrDefault(p => p.ShapeId == id && p.ProjectId == cpid));
-            Projects pr = await context.Projects.FirstOrDefaultAsync(p => p.Id == id);
+            Projects pr = context.Projects.FirstOrDefault(p => p.Id == id);
             foreach (var item in pr.Result)
             {
                 context.Result.Remove(item);
