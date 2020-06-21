@@ -85,14 +85,15 @@ namespace Services
             //step 1-place first shape
             if (stationary == null)
             {
-                int indexOfF = 0;
+                int indexOfX = 0;
+                int indexOfY = 0;
                 for (int p = 1; p < orbiting.Points.Length; p++)
                 {
-                    if (orbiting.Points[p].X < orbiting.Points[indexOfF].X) indexOfF = p;
-                    else if (orbiting.Points[p].X == orbiting.Points[indexOfF].X && orbiting.Points[p].Y < orbiting.Points[indexOfF].Y) indexOfF = p;
+                    if (orbiting.Points[p].X < orbiting.Points[indexOfX].X||(orbiting.Points[p].X == orbiting.Points[indexOfX].X&& orbiting.Points[p].Y < orbiting.Points[indexOfX].Y)) indexOfX = p;
+                    if (orbiting.Points[p].Y < orbiting.Points[indexOfY].Y|| (orbiting.Points[p].Y == orbiting.Points[indexOfY].Y && orbiting.Points[p].X < orbiting.Points[indexOfY].X)) indexOfY = p;
                 }
-                Points indexOnA = new Points(0, area.Height - (area.Height - orbiting.Points[indexOfF].Y));
-                PlaceOnArea(orbiting, indexOfF, indexOnA);
+                Points indexOnA = new Points(orbiting.Points[0].X- orbiting.Points[indexOfX].X, 0);
+                PlaceOnArea(orbiting, 0, indexOnA);
                 stationary = orbiting;
                 return true;
             }
