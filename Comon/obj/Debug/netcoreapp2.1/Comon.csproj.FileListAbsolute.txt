@@ -19,3 +19,12 @@ C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\obj\Debug\n
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.dll
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.pdb
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.csproj.CoreCompileInputs.cache
+E:\new project\ShapeUpDBProject\Comon\bin\Debug\netcoreapp2.1\Comon.deps.json
+E:\new project\ShapeUpDBProject\Comon\bin\Debug\netcoreapp2.1\Comon.dll
+E:\new project\ShapeUpDBProject\Comon\bin\Debug\netcoreapp2.1\Comon.pdb
+E:\new project\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.csprojAssemblyReference.cache
+E:\new project\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.AssemblyInfoInputs.cache
+E:\new project\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.AssemblyInfo.cs
+E:\new project\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.csproj.CoreCompileInputs.cache
+E:\new project\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.dll
+E:\new project\ShapeUpDBProject\Comon\obj\Debug\netcoreapp2.1\Comon.pdb

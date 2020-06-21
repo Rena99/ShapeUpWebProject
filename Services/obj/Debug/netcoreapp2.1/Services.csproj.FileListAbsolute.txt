@@ -50,3 +50,17 @@ C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Services\obj\Debu
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.dll
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.pdb
 C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+E:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Services.deps.json
+E:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Services.dll
+E:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Services.pdb
+E:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Comon.dll
+E:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Repositories.dll
+E:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Comon.pdb
+E:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Repositories.pdb
+E:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+E:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+E:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+E:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+E:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.csproj.CopyComplete
+E:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.dll
+E:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.pdb

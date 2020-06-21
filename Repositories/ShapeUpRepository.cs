@@ -56,7 +56,7 @@ namespace Repositories
             }
             context.Projects.Add(project);
             context.SaveChanges();
-            Projects pr= await context.Projects.OrderByDescending(q => q.Id).FirstOrDefaultAsync();
+            Projects pr = await context.Projects.LastAsync();
             return mapper.Map<ProjectsDTO>(pr);
         }
         public async Task<ProjectsDTO> GetProject(int id)
@@ -178,7 +178,7 @@ namespace Repositories
         public async Task<List<PointDTO>> GetPoints(int id)
         {
             List<PointDTO> points = new List<PointDTO>();
-            Shapes s = await context.Shapes.FirstOrDefaultAsync(sh => sh.Id == id);
+            Shapes s = await context.Shapes.Include(sh=>sh.Point).FirstOrDefaultAsync(sh => sh.Id == id);
             foreach (var item in s.Point)
             {
                 points.Add(mapper.Map<PointDTO>(item));
@@ -187,7 +187,7 @@ namespace Repositories
         }
         public async Task<ResultsDTO> GetResult(int pid, int id)
         {
-            Shapes s = await context.Shapes.FirstOrDefaultAsync(pr => pr.Id == id);
+            Shapes s = await context.Shapes.Include(pr=>pr.Result).FirstOrDefaultAsync(pr => pr.Id == id);
             foreach (var item in s.Result)
             {
                 if(item.ProjectId==pid)
