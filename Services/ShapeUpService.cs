@@ -107,7 +107,7 @@ namespace Services
             {
                 foreach (var item in myShapes)
                 {
-                    AddResult(item.IndexOfPoint.X + item.MinX, item.IndexOfPoint.Y + item.MinY, item.PointOnArea.X, item.PointOnArea.Y, item.Id, p.Id);
+                    AddResult(item.IndexOfPoint.X, item.IndexOfPoint.Y, item.PointOnArea.X, item.PointOnArea.Y, item.Id, p.Id);
                 }
             }
             return algorithm.Succeeded;
