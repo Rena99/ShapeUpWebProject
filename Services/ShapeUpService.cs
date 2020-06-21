@@ -107,5 +107,10 @@ namespace Services
             }
             return algorithm.Succeeded;
         }
+
+        public async Task<List<CompleteShape>> GetCompleteShapes(int pid)
+        {
+            return await repository.GetCompleteShapes(pid);
+        }
     }
 }

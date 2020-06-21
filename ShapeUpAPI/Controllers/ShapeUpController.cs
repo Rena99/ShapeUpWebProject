@@ -46,7 +46,7 @@ namespace ShapeUpAPI.Controllers
         [HttpGet("Project/{id}")]
         public async Task<ProjectsDTO> GetProject(int id) => await service.GetProject(id);
 
-        [HttpPost("Projects")]
+        [HttpPost("Project")]
         public async Task<ProjectsDTO> EditProjectTitle([FromBody] Projects p) => await service.EditProjectTitle(p);
 
         [HttpDelete("Projects/{id}")]
@@ -62,7 +62,7 @@ namespace ShapeUpAPI.Controllers
         [HttpGet("Shapes/{pid}")]
         public async Task<List<ShapesDTO>> GetShapes(int pid) => await service.GetShapes(pid);
 
-        [HttpPost("Shape/{pid}")]
+        [HttpPost("Shapes/{pid}")]
         public async Task<ShapesDTO> EditShape([FromBody] Shapes s, int pid) => await service.EditShape(s, pid);
 
         [HttpDelete("Shape/{id}/{cpid}")]
@@ -77,5 +77,9 @@ namespace ShapeUpAPI.Controllers
 
         [HttpGet("points/{id}")]
         public async Task<List<PointDTO>> GetPoints(int id) => await service.GetPoints(id);
+
+
+        [HttpGet("fullshape/{pid}")]
+        public async Task<List<CompleteShape>> GetCompleteShapes(int pid) => await service.GetCompleteShapes(pid);
     }
 }

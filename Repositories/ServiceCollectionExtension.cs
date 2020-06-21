@@ -12,7 +12,7 @@ namespace Repositories
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddDbContext<ShapeUp>(options =>
-            options.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\Bnot Elisheva\ShapeUpDBProject\DB\ShapeUp.mdf;Integrated Security=True;Connect Timeout=30"), ServiceLifetime.Scoped);
+            options.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\rina lerner\Documents\ShapeUPProject\ShapeUpDBProject\DB\ShapeUp.mdf;Integrated Security=True;Connect Timeout=30"), ServiceLifetime.Scoped);
             return services;
         }
     }
