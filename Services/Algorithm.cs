@@ -74,7 +74,11 @@ namespace Services
             ShrinkingAlgorithm(shapes); //shrinks area
             foreach (var item in shapes)//checks if shapes fit in area
             {
-                if (item.PointOnArea.X + (item.Width - item.IndexOfPoint.X) > area.Width) return false;
+                foreach (var p in item.PlacedPoints)
+                {
+                    if (p.X > area.Width) return false;
+                }
+               
             }
             return success;
         }

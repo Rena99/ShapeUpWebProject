@@ -64,3 +64,17 @@ E:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.csproj
 E:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.csproj.CopyComplete
 E:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.dll
 E:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.pdb
+F:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Services.deps.json
+F:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Services.dll
+F:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Services.pdb
+F:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Comon.dll
+F:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Repositories.dll
+F:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Comon.pdb
+F:\new project\ShapeUpDBProject\Services\bin\Debug\netcoreapp2.1\Repositories.pdb
+F:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+F:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+F:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+F:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+F:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.csproj.CopyComplete
+F:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.dll
+F:\new project\ShapeUpDBProject\Services\obj\Debug\netcoreapp2.1\Services.pdb
